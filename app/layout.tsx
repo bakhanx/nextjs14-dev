@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import Navigation from "@/components/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | YM Light",
-    default: "YM Light",
+    template: "%s | Dev Page",
+    default: "Dev Page",
   },
-  description: "Light Boutique Shop",
+  description: "This is nextjs14 dev Page",
 };
 
 export default function RootLayout({
