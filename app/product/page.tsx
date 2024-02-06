@@ -1,23 +1,18 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import MovieInfo from "./components/movie-info";
+
 
 export const metadata: Metadata = {
   title: "Product",
 };
 
-const Product = () => {
+export const API_URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
+
+const Product = async () => {
   return (
     <div>
-      <span>Detail</span>
-      <ul>
-        {Array(5)
-          .fill(0)
-          .map((e, i) => (
-            <li key={i} className="py-2 hover:text-blue-500">
-              <Link href={`/product/${i}`}>Product{i}</Link>
-            </li>
-          ))}
-      </ul>
+      <h1>Detail</h1>
+      <MovieInfo />
     </div>
   );
 };
