@@ -1,9 +1,9 @@
 import { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
 import Head from "next/head";
-import { API_URL } from "../page";
 import { Suspense } from "react";
 import MovieInfo, { MovieType, getMovies } from "../components/movie-info";
 import MovieVideos from "../components/movie-videos";
+import { API_URL } from "@/app/constants";
 
 type Props = {
   params: {
