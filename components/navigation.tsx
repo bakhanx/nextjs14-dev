@@ -17,7 +17,13 @@ const Navigation = () => {
           <Link href="/contact">Contact</Link>
         </li>
         <li>
+          <Link href="/album">Album</Link>
+        </li>
+        <li>
           <Link href="/admin">Admin</Link>
+        </li>
+        <li>
+          <Link href="/cart">Cart</Link>
         </li>
       </ul>
     </nav>
