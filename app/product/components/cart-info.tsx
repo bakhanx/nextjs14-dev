@@ -8,10 +8,16 @@ import {
   useUserStore,
 } from "@/app/(state)/product";
 import Button from "@/components/button";
-import React from "react";
+import React, { useEffect } from "react";
 
 const CartInfo = () => {
+  
+  useEffect(() => {
+    useStore.persist.rehydrate();
+  }, []);
+
   const bears = useStore((state) => state.bears);
+
   const firstName = usePersonStore((state) => state.firstName);
   const lastName = usePersonStore((state) => state.lastName);
 
@@ -24,6 +30,9 @@ const CartInfo = () => {
   const handleIncrement = useCountStore((state) => state.increment);
   const handleDecrement = useCountStore((state) => state.decrement);
 
+  // destructure 사용법
+  const { count, decrement, increment } = useCountStore2((state) => state);
+
   const useCount2 = useCountStore2((state) => state.count);
   const handleIncrement2 = useCountStore2((state) => state.increment);
   const handleDecrement2 = useCountStore2((state) => state.decrement);
@@ -33,7 +42,7 @@ const CartInfo = () => {
       <div>
         Name : {firstName} {lastName}
       </div>
-      <div>Cart : {bears}</div>
+      <div>Bears Count : {bears}</div>
       <div className="flex gap-x-2">
         <Button
           name="Immer User"
@@ -54,8 +63,6 @@ const CartInfo = () => {
         <Button name="Use Count-1" onClick={() => handleDecrement(1)} />
         <Button name="Use Count+2" onClick={() => handleIncrement2(2)} />
         <Button name="Use Count-2" onClick={() => handleDecrement2(2)} />
-
-        
       </div>
       <div>count + 1 : {useCount}</div>
       <div>count + 2 : {useCount2}</div>
