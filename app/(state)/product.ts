@@ -1,5 +1,6 @@
 import { produce } from "immer";
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
 type BearState = {
@@ -62,7 +63,7 @@ export const useUserStore = create<UserState & UserAction>((set) => ({
     })),
 }));
 
-export const useCountStore = create<CountState & CountAction>()((set) => ({
+export const useCountStore = create<CountState & CountAction>((set) => ({
   count: 0,
   increment: (qty: number) => set((state) => ({ count: state.count + qty })),
   decrement: (qty: number) => set((state) => ({ count: state.count - qty })),
@@ -82,9 +83,20 @@ export const useCountStore2 = create<CountState & CountAction>()(
   }))
 );
 
-export const useStore = create<BearState & BearAction>((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-  updateBears: (newBears) => set({ bears: newBears }),
-}));
+// Persist
+export const useStore = create<BearState & BearAction>()(
+  persist(
+    (set) => ({
+      bears: 0,
+      increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+      removeAllBears: () => set({ bears: 0 }),
+      updateBears: (newBears) => set({ bears: newBears }),
+    }),
+    {
+      name: "bear-storage",
+      storage: createJSONStorage(() => sessionStorage),
+      partialize: (state) => ({ bears: state.bears }),
+      skipHydration:true
+    }
+  )
+);
