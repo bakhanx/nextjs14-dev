@@ -1,14 +1,14 @@
 "use client";
 
 import { useStore } from "@/app/(state)/product";
-import CartInfo from "@/app/product/components/cart-info";
+import CartInfo from "@/app/(content)/movie/components/cart-info";
 import React from "react";
 import { create } from "zustand";
 
 const Cart = () => {
   const bears = useStore((state) => state.bears);
   const increasePopulation = useStore((state) => state.increasePopulation);
-
+  
   return (
     <div>
       <div>cart page</div>
