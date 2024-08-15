@@ -1,8 +1,15 @@
+"use client";
 import { HomePage } from "@/components/pages/home-page";
 import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
 import React from "react";
 
-const page = () => {
+const Page = () => {
+  const router = useRouter();
+  const onClick = () => {
+    router.push("/cart/1");
+  };
+
   return (
     <div>
       <div>테스트 페이지 링크 모음</div>
@@ -30,9 +37,17 @@ const page = () => {
         <Link href={"/lotto"} className="border border-gray-500 p-2">
           로또
         </Link>
+        <Link href={"/chat"} className="border border-gray-500 p-2">
+          채팅
+        </Link>
+        <Link href={"/cart/1"} className="border border-gray-500 p-2">
+          장바구니 모달
+        </Link>
+
+        <button onClick={onClick}>리다이렉트</button>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
