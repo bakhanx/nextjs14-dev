@@ -1,15 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import card from "@/styles/Card.module.css";
 
 const Album = () => {
   return (
-    <div className="pt-10">
-      Album Main Page
-
-
+    <div className="grid grid-cols-3 bg-black">
       {[...Array(5)].map((e, i) => (
-        <div key={i} className="p-2 bg-blue-300 w-20 m-5">
-          <Link href={`/album/${i}`}>Album {i}</Link>
+        <div key={i} className={`${card.container}`}>
+          <div className={`${card.card} `}>{i}</div>
         </div>
       ))}
     </div>
