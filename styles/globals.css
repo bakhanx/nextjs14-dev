@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --card-height: 45vh;
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+  
+
 h1{
     font-size: x-large;
     font-weight: bold;
